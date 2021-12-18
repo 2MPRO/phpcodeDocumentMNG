@@ -9,6 +9,7 @@
 	$result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)){
           array_push($arrayuser, new user(
+                $row['idNguoiDung'],
                 $row['taiKhoan'],
                 $row['hoten'],
                 $row['matkhau'],
@@ -32,7 +33,8 @@
         
 
     class user{
-        function __construct($taiKhoan,$hoten,$matkhau,$idPhongBan,$tenPhongBan,$ngaysinh,$gioitinh,$diachi) {
+        function __construct($idNguoidung,$taiKhoan,$hoten,$matkhau,$idPhongBan,$tenPhongBan,$ngaysinh,$gioitinh,$diachi) {
+            $this->idNguoidung = $idNguoidung;
             $this->taiKhoan = $taiKhoan;
             $this->hoten = $hoten;
             $this->matkhau = $matkhau;
