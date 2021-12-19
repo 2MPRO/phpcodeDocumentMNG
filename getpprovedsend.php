@@ -22,9 +22,9 @@
     echo json_encode($arrayReceiveApproved);
     
     class Document{
-        function __construct($idVBN,$tenVB,$tenPhongBan,$idDinhKem,$idLoaiVanBan,$noiDung,$soHieu,$ngayBanHanh, $gioBanHanh,$trangThai) {
+        function __construct($idVBD,$tenVB,$tenPhongBan,$idDinhKem,$idLoaiVanBan,$noiDung,$soHieu,$ngayBanHanh, $gioBanHanh,$trangThai) {
            
-            $this->idVBN = $idVBN;
+            $this->idVBD = $idVBD;
             $this->tenVB = $tenVB;
             $this->tenPhongBan = $tenPhongBan;
             $this->idLoaiVanBan = $idLoaiVanBan;
