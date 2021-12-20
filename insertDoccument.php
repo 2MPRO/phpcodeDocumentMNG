@@ -13,18 +13,25 @@
     $noiDung = $_POST['noiDung'];
     $ngayBanHanh = $_POST['ngayBanHanh'];
     $gioBanHanh = $_POST['gioBanHanh'];
-  
     $tenVanBan = $_POST['tenVanBan'];
 
-    $querry = "INSERT INTO `vanbannhan` (`idVBN`, `idPhongBan`, `idNoiDen`, `idLoaiVanBan`, `idMucDo`, `idDinhKem`, `noiDung`, `soHieu`, `ngayBanHanh`, `gioBanHanh`, `trangThai`, `tenVanBan`) VALUES 
+    $querry = "INSERT INTO `vanbannhan` (`idVBN`, `idPhongBan`, `idNoiDen`, `idLoaiVanBan`, `idMucDo`, `dinhKem`, `noiDung`, `soHieu`, `ngayBanHanh`, `gioBanHanh`, `trangThai`, `tenVanBan`) VALUES 
+            
                                         (NULL, '$idNoiDen', '$idPhongBan', '$idLoaiVanBan', '$idMucDo', '$idDinhKem', '$noiDung', '$soHieu', '$ngayBanHanh', '$gioBanHanh', 'Chưa duyệt', '$tenVanBan');";    
-     $querry2 = "INSERT INTO `vanbandi` (`idVBD`, `idPhongBan`, `idNoiNhan`, `idLoaiVanBan`, `idMucDo`, `idDinhKem`, `noiDung`, `soHieu`, `ngayBanHanh`, `gioBanHanh`, `trangThai`, `tenVanBan`) VALUES 
+    $querry2 = "INSERT INTO `vanbandi` (`idVBD`, `idPhongBan`, `idNoiNhan`, `idLoaiVanBan`, `idMucDo`, `dinhKem`, `noiDung`, `soHieu`, `ngayBanHanh`, `gioBanHanh`, `trangThai`, `tenVanBan`) VALUES 
                                         (NULL, '$idPhongBan', '$idNoiDen', '$idLoaiVanBan', '$idMucDo', '$idDinhKem', '$noiDung', '$soHieu', '$ngayBanHanh', '$gioBanHanh', 'Đã gửi', '$tenVanBan');";                   
-    $result =mysqli_query($connect, $querry);
-    $result =mysqli_query($connect, $querry2);
+
+    if(isset($_POST['acTion'])){
+        $idVBD = $_POST['acTion'];
+        $querry2 = "UPDATE `vanbandi` set `idPhongBan` = '$idPhongBan', `idNoiNhan` = '$idNoiDen' , `idLoaiVanBan` = '$idLoaiVanBan', `idMucDo` = '$idMucDo', `dinhKem` = '$idDinhKem', `noiDung` = '$noiDung',
+         `soHieu` ='$soHieu', `ngayBanHanh`='$ngayBanHanh', `gioBanHanh`='$gioBanHanh', `trangThai`='Đã gửi', `tenVanBan`='$tenVanBan' WHERE 
+             `idVBD` = '$idVBD' ";
+           }
+        $result =mysqli_query($connect, $querry);
+        $result =mysqli_query($connect, $querry2);
     if($result)
     {
         echo "success";
     }
-    else echo $querry;
+    else echo $querry2;
 ?>
