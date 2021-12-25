@@ -7,7 +7,7 @@
     $rowdocRoot2 = mysqli_fetch_assoc($result);
     $docRoot2 = ($rowdocRoot2['tenPhongBan']);
 
-    $query = "SELECT * FROM loaivanban, mucdo, vanbannhan, phongban where trangthai = 'đã duyệt' and vanbannhan.idPhongBan='$idRoom' and phongban.idphongban= vanbannhan.idnoiden and vanbannhan.idLoaiVanBan = loaivanban.idLVB and vanbannhan.idMucDo = mucdo.idMucDo";
+    $query = "SELECT * FROM dinhKem,loaivanban, mucdo, vanbannhan, phongban where dinhKem.soHieu = vanbannhan.soHieu and trangthai = 'đã duyệt' and vanbannhan.idPhongBan='$idRoom' and phongban.idphongban= vanbannhan.idnoiden and vanbannhan.idLoaiVanBan = loaivanban.idLVB and vanbannhan.idMucDo = mucdo.idMucDo";
     $data = mysqli_query($connect, $query);
     $arrayReceiveApproved = array();
     while ($row = mysqli_fetch_assoc($data)){
@@ -20,7 +20,7 @@
             $row['gioBanHanh'],
             $row['trangThai'],
             $docRoot2,
-            $row['dinhKem'],
+            $row['location'],
             $row['tenLoai'],
             $row['tenMucDo'],
             $row['noiDung'],

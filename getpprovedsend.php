@@ -9,7 +9,7 @@
     $docRoot2 = ($rowdocRoot2['tenPhongBan']);
 
 
-    $query = "SELECT * FROM vanbandi, phongban , loaivanban, mucdo where trangthai = 'đã gửi' and vanbandi.idPhongBan='$idRoom' and phongban.idphongban= vanbandi.idnoinhan 
+    $query = "SELECT * FROM vanbandi, phongban , loaivanban, mucdo, dinhkem where dinhkem.soHieu = vanbandi.soHieu and trangthai = 'đã gửi' and vanbandi.idPhongBan='$idRoom' and phongban.idphongban= vanbandi.idnoinhan 
     and vanbandi.idLoaiVanBan = loaivanban.idLVB and vanbandi.idMucDo = mucdo.idMucDo";
     $data = mysqli_query($connect, $query);
     $arrayReceiveApproved = array();
@@ -23,7 +23,7 @@
             $row['gioBanHanh'],
             $row['trangThai'],
             $row['tenPhongBan'],
-            $row['dinhKem'],
+            $row['location'],
             $row['tenLoai'],
             $row['tenMucDo'],
             $row['noiDung'],

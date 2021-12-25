@@ -11,6 +11,7 @@
     else{
         $soHieu = "Doc/".($row['id'] + 1);
     }
+    
    
     $idDinhKem = "1";
     $idPhongBan = $_POST['idPhongBan'];
@@ -27,7 +28,7 @@
     $querry2 = "INSERT INTO `vanbandi` (`idVBD`, `idPhongBan`, `idNoiNhan`, `idLoaiVanBan`, `idMucDo`, `dinhKem`, `noiDung`, `soHieu`, `ngayBanHanh`, `gioBanHanh`, `trangThai`, `tenVanBan`) VALUES 
                                         (NULL, '$idPhongBan', '$idNoiDen', '$idLoaiVanBan', '$idMucDo', '$idDinhKem', '$noiDung', '$soHieu', '$ngayBanHanh', '$gioBanHanh', 'Đã gửi', '$tenVanBan');";                   
     //acTion khi bấm vào Gửi từ chổ soạn
-    if(isset($_POST['acTion'])){
+    if(isset($_POST['acTion'])) {
         $idVBD = $_POST['acTion'];
         $querry2 = "UPDATE `vanbandi` set `idPhongBan` = '$idPhongBan', `idNoiNhan` = '$idNoiDen' , `idLoaiVanBan` = '$idLoaiVanBan', `idMucDo` = '$idMucDo', `dinhKem` = '$idDinhKem', `noiDung` = '$noiDung',
          `ngayBanHanh`='$ngayBanHanh', `gioBanHanh`='$gioBanHanh', `trangThai`='Đã gửi', `tenVanBan`='$tenVanBan' WHERE 
@@ -45,7 +46,7 @@
     $result2 = mysqli_query($connect, $querry2);
     if($result)
     {
-        echo "success";
+        echo $soHieu;
     }
-    else echo  $querry;
+    else echo  $erro;
 ?>

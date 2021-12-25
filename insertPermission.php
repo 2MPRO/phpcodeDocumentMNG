@@ -16,4 +16,5 @@ foreach($data as $value){
 
 if ($result) {
     echo "success";
-} else echo  $querry;
+    }
+else echo  $querry;
