@@ -17,9 +17,9 @@
                 $row['idPhongBan'],
                 $row['tenPhongBan'],
                 $row['ngaysinh'],
-                $row['diachi'],
-                $row['ngaysinh'],
-                $row['gioitinh']
+                $row['gioitinh'],
+                
+                $row['diachi']
           ));
         
         }
@@ -30,11 +30,10 @@
     }
     else{
         echo "failure";
-    }
-        
-
+    }       
     class user{
-        function __construct($idNguoidung,$idQuyen,$taiKhoan,$hoten,$matkhau,$idPhongBan,$tenPhongBan,$ngaysinh,$gioitinh,$diachi) {
+        function __construct($idNguoidung,$idQuyen,$taiKhoan,$hoten,$matkhau,$idPhongBan,$tenPhongBan,$ngaysinh,
+            $gioitinh,$diachi) {
             $this->idNguoidung = $idNguoidung;
             $this->idQuyen = $idQuyen;
             $this->taiKhoan = $taiKhoan;
@@ -42,10 +41,9 @@
             $this->matkhau = $matkhau;
             $this->idPhongBan = $idPhongBan;  
             $this->tenPhongBan = $tenPhongBan;  
-            $this->ngaysinh = $ngaysinh;  
-            $this->diachi = $diachi;   
-            $this->ngaysinh = $ngaysinh;  
+            $this->ngaysinh = $ngaysinh;      
             $this->gioitinh = $gioitinh;
+            $this->diachi = $diachi;
         }
     }
    
