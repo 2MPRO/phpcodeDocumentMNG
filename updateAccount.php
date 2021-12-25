@@ -17,31 +17,43 @@
 
     $result = mysqli_query($connect, $querry);
 
+
     $arrayuser = array();
-        $sql = "select nguoiDung.*, phongban.tenPhongBan , quyen.idQuyen from phongban, nguoidung , quyen, phanquyen where taiKhoan = '$taiKhoan' and phongban.idPhongBan = nguoidung.idPhongBan and nguoidung.idPhongBan = phanquyen.idPhongBan and phanquyen.idQuyen = quyen.idQuyen";
-    $result1 = mysqli_query($connect,$sql);
+    $sql1 = "select * from nguoidung";
+    $result1 = mysqli_query($connect,$sql1);
         while($row = mysqli_fetch_assoc($result1)){
           array_push($arrayuser, new user(
                 $row['idNguoiDung'],
-                $row['idQuyen'],
                 $row['taiKhoan'],
                 $row['hoten'],
                 $row['matkhau'],
-                $row['idPhongBan'],
-                $row['tenPhongBan'],
                 $row['ngaysinh'],
                 $row['gioitinh'],               
                 $row['diachi']
           ));
         
         }
-    }
+    
     
     if(count($arrayuser)>0){
         echo json_encode($arrayuser);
     }
     else{
         echo "failure";
-    }       
+    } 
+    class user{
+        function __construct($idNguoidung,$taiKhoan,$hoten,$matkhau,$ngaysinh,
+            $gioitinh,$diachi) {
+            $this->idNguoidung = $idNguoidung;
+     
+            $this->taiKhoan = $taiKhoan;
+            $this->hoten = $hoten;
+            $this->matkhau = $matkhau;
+ 
+            $this->ngaysinh = $ngaysinh;      
+            $this->gioitinh = $gioitinh;
+            $this->diachi = $diachi;
+        }
+    }      
 
 ?>
